@@ -1,2 +1,2 @@
-# Alfred_sayone
+# Sayone
 Internship Repository
