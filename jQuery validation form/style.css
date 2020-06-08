@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+
+/* Styles */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Open Sans";
+  font-size: 14px;
+  background-color:tomato;
+}
+
+.container {
+  width: 500px;
+  margin: 25px auto;
+  margin-top: 100px;
+}
+
+
+form {
+  padding: 30px 27px 43px 27px;
+  background: #2c3e50ef;
+  color: rgb(230, 212, 212);
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+form label,
+form input,
+form button {
+  border: 0;
+  margin-bottom: 4px;
+  display: block;
+  width: 100%;
+}
+form input {
+  height: 25px;
+  line-height: 25px;
+  background: #fff;
+  color: #000;
+  padding: 0 6px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+form button {
+  height: 30px;
+  line-height: 30px;
+  background: #8873e4;
+  color: #fff;
+  margin-top: 32px;
+  cursor: pointer;
+}
+form legend {
+    text-align: center;
+    height: 30px;
+    font-size: medium;
+    color: rgb(255, 25, 25);
+}
+p {
+    margin-top: 9px;
+}

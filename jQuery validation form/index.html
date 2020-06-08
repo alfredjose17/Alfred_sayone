@@ -7,8 +7,37 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
         <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
-        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
-        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+        
+        <script>
+            $(document).ready(function() {
+                let dropdown = $('#country');
+
+                dropdown.empty();
+
+                dropdown.append('<option selected="true" disabled>Select your country</option>');
+                dropdown.prop('selectedIndex', 0);
+
+                const url = 'https://restcountries.eu/rest/v2/all';
+
+                // Populate dropdown with list of provinces
+                $.getJSON(url, function (data) {
+                    $.each(data, function (key, entry) {
+                        dropdown.append($('<option></option>').attr('value', entry.abbreviation).text(entry.name));
+                    })
+                });
+
+
+                $("#date").change(function()
+                {
+                    var dob = $("#date").val();
+                    dob = new Date(dob);
+                    var today = new Date();
+                    var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+                    $("#age").val(age);
+                });
+            });
+        </script>
+
     </head>
 
     <body>
@@ -31,9 +60,13 @@
                     <input type="date" id="date" required name="dob"/>
                 </p>
                 <p>
+                    <label for="age">Age </label>
+                    <input type="text" id="age" required name="age" readonly style="background-color: rgb(231, 231, 231);"/>
+                </p>
+                <p>
                     <label for="ccountry">Country </label>
-                    <!-- <select class="js-data-example-ajax" aria-valuetext="Choose your country">Choose your country</select> -->
-                    <input type="text" id="ccountry" required name="country"/ placeholder="Enter your Country">
+                    <select name="country" id="country" required>
+                    </select>
                 </p>
                 <p>
                     <button type="submit" class="submit" form="validationForm">Submit</button>
