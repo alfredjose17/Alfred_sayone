@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        var url="https://jsonplaceholder.typicode.com/posts";
+        $.getJSON(url,function(data){
+          var row_data ='';
+          $.each(data,function(key,value){
+            row_data += '<tr>';
+            row_data += '<td>'+value.userId+'</td>';
+            row_data += '<td>'+value.id+'</td>';
+            row_data += '<td>'+value.title+'</td>';
+            row_data += '<td>'+value.body+'</td>';
+            row_data += '</tr>';
+          });
+          $("#t_data").append(row_data);
+        });
+      });
+    </script>
+    
+    <style>
+        h1{
+            text-align: center;
+            color: rgb(70, 37, 187);
+        }
+        .t {
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        .t td, .t th {
+          border: 3px solid black;
+          padding: 6px;
+        }
+        
+        .t tr:nth-child(even){background-color:white;}
+        
+        
+        .t th {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          text-align: left;
+          background-color:rgb(25, 61, 25);
+          color: white;
+          margin-left: 5px;
+        }
+        #p{
+            text-align: center;
+        }
+        </style>
+  </head>
+  
+  <body style="margin: 30px;">
+    
+    <h1><b>Data From The Source</b></h1>
+    <table class="t"  id="t_data" name="t_data">
+      <tr>
+        <th>UserId</th>
+        <th>ID</th>
+        <th>Title</th>
+        <th id="p">Body</th>
+      </tr>
+    </table>
+
+  </body>
+
+</html>
